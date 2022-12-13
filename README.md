@@ -133,15 +133,19 @@ Note: This scenario might apply to any folder, such as the inbox or any other fo
 
 
 Scenario 2: Restoring bulk deleted items that were deleted by mistake.
-Finally, if you have ever assigned a compliance retention policy to the incorrect mailbox or to multiple mailboxes by accident, this will result in bulk removal. For example, one of my customers applied a policy that deletes content after six months to the entire company instead of a single user, resulting in the bulk deletion of items older than six months. It was a massive task, but we were ultimately able to recover the deleted items by following the steps below:
+
+ Finally, if you have ever assigned a compliance retention policy to the incorrect mailbox or to multiple mailboxes by accident, this will result in bulk removal. For example, one of my customers applied a policy that deletes content after six months to the entire company instead of a single user, resulting in the bulk deletion of items older than six months. It was a massive task, but we were ultimately able to recover the deleted items by following the steps below:
 To avoid processing the mailbox via MFA while restoring the deleted items, first disable ELC processing for the entire organization or for the impacted mailbox.
 Set-OrganizationConfig –ELcProcessingDisabled $True
 use PowerShell to recover deleted emails from the recoverable items folder and restore them to their original location:
 You can restore the mail items based on the deletion date, for example:
 Get-RecoverableItems -identity <User> -ResultSize unlimited -FilterItemType IPM.Note - FilterStartTime “dd/mm/yyyy” | Restore-RecoverableItems
-For more information:
+
+ For more information:
 ·       Recover deleted messages in a user's mailbox in Exchange Online | Microsoft Docs
 ·       Get-RecoverableItems (ExchangePowerShell) | Microsoft Docs
 ·       Restore-RecoverableItems (ExchangePowerShell) | Microsoft Docs 
-I hope you find this information helpful when troubleshooting your next retention case.
-Mustafa Nassar
+
+ I hope you find this information helpful when troubleshooting your next retention case.
+
+ Mustafa Nassar
